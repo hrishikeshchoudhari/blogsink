@@ -1,3 +1,3 @@
 ## Todo
-[ ] Clean up index route
-[ ] Check out TW styling on index route
+- [ ] Clean up index route
+- [ ] Check out TW styling on index route
