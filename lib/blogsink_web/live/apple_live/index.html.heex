@@ -1,0 +1,42 @@
+<.header>
+  Listing Apples
+  <:actions>
+    <.link patch={~p"/apples/new"}>
+      <.button>New Apple</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="apples"
+  rows={@streams.apples}
+  row_click={fn {_id, apple} -> JS.navigate(~p"/apples/#{apple}") end}
+>
+  <:col :let={{_id, apple}} label="Name"><%= apple.name %></:col>
+  <:col :let={{_id, apple}} label="Origin"><%= apple.origin %></:col>
+  <:action :let={{_id, apple}}>
+    <div class="sr-only">
+      <.link navigate={~p"/apples/#{apple}"}>Show</.link>
+    </div>
+    <.link patch={~p"/apples/#{apple}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, apple}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: apple.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="apple-modal" show on_cancel={JS.patch(~p"/apples")}>
+  <.live_component
+    module={BlogsinkWeb.AppleLive.FormComponent}
+    id={@apple.id || :new}
+    title={@page_title}
+    action={@live_action}
+    apple={@apple}
+    patch={~p"/apples"}
+  />
+</.modal>

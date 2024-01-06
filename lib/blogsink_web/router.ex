@@ -18,6 +18,16 @@ defmodule BlogsinkWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/apples", AppleLive.Index, :index
+    live "/apples/new", AppleLive.Index, :new
+    live "/apples/:id/edit", AppleLive.Index, :edit
+
+    live "/apples/:id", AppleLive.Show, :show
+    live "/apples/:id/show/edit", AppleLive.Show, :edit
+
+    resources "/students", StudentController
+
   end
 
   # Other scopes may use custom stacks.
