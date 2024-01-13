@@ -1,5 +1,6 @@
 defmodule BlogsinkWeb.Router do
   use BlogsinkWeb, :router
+  import PhoenixStorybook.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -12,6 +13,15 @@ defmodule BlogsinkWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  scope "/" do
+    storybook_assets()
+  end
+
+  scope "/", Elixir.BlogsinkWeb do
+    pipe_through(:browser)
+    live_storybook "/storybook", backend_module: Elixir.BlogsinkWeb.Storybook
   end
 
   scope "/", BlogsinkWeb do

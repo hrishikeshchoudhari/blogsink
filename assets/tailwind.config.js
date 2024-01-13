@@ -6,6 +6,7 @@ const fs = require("fs")
 const path = require("path")
 
 module.exports = {
+  important: ".blogsink-web",
   content: [
     "./js/**/*.js",
     "../lib/blogsink_web.ex",

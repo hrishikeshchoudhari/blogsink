@@ -26,7 +26,8 @@ config :blogsink, BlogsinkWeb.Endpoint,
   secret_key_base: "KI+lzxS4M0Bg+iZ/3XqgXOGFrmgA607AD3UJdVjM4oif1aqHvp5qra9LT7blSszn",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]},
+    storybook_tailwind: {Tailwind, :install_and_run, [:storybook, ~w(--watch)]}
   ]
 
 # ## SSL Support
@@ -58,7 +59,8 @@ config :blogsink, BlogsinkWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/blogsink_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/blogsink_web/(controllers|live|components)/.*(ex|heex)$",
+      ~r"storybook/.*(exs)$"
     ]
   ]
 

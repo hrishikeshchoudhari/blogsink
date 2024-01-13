@@ -45,3 +45,31 @@ Add the live routes to your browser scope in lib/blogsink_web/router.ex:
 Remember to update your repository by running migrations:
 
     $ mix ecto.migrate
+
+
+**❯ mix phx.gen.html School Student students name:string origin:string**
+* creating lib/blogsink_web/controllers/student_controller.ex
+* creating lib/blogsink_web/controllers/student_html/edit.html.heex
+* creating lib/blogsink_web/controllers/student_html/index.html.heex
+* creating lib/blogsink_web/controllers/student_html/new.html.heex
+* creating lib/blogsink_web/controllers/student_html/show.html.heex
+* creating lib/blogsink_web/controllers/student_html/student_form.html.heex
+* creating lib/blogsink_web/controllers/student_html.ex
+* creating test/blogsink_web/controllers/student_controller_test.exs
+* creating lib/blogsink/school/student.ex
+* creating priv/repo/migrations/20240106182843_create_students.exs
+* creating lib/blogsink/school.ex
+* injecting lib/blogsink/school.ex
+* creating test/blogsink/school_test.exs
+* injecting test/blogsink/school_test.exs
+* creating test/support/fixtures/school_fixtures.ex
+* injecting test/support/fixtures/school_fixtures.ex
+
+Add the resource to your browser scope in lib/blogsink_web/router.ex:
+
+    resources "/students", StudentController
+
+
+Remember to update your repository by running migrations:
+
+    $ mix ecto.migrate
