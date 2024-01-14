@@ -19,10 +19,9 @@ defmodule BlogsinkWeb.Router do
     storybook_assets()
   end
 
-  scope "/", Elixir.BlogsinkWeb do
-    pipe_through(:browser)
-    live_storybook "/storybook", backend_module: Elixir.BlogsinkWeb.Storybook
-  end
+  # scope "/", Elixir.BlogsinkWeb do
+  #   pipe_through(:browser)
+  # end
 
   scope "/", BlogsinkWeb do
     pipe_through :browser
@@ -37,6 +36,9 @@ defmodule BlogsinkWeb.Router do
     live "/apples/:id/show/edit", AppleLive.Show, :edit
 
     resources "/students", StudentController
+
+    live_storybook "/storybook", backend_module: Elixir.BlogsinkWeb.Storybook
+
 
   end
 

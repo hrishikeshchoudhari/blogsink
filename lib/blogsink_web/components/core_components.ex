@@ -571,6 +571,22 @@ defmodule BlogsinkWeb.CoreComponents do
   end
 
   @doc """
+  Renders a custom component.
+
+  """
+
+  attr :id, :string, required: true
+  slot :inner_block, required: true
+
+  def custcomp(assigns) do
+    ~H"""
+    <div id={@val1}>
+      <h1>CustComp</h1>
+    </div>
+    """
+  end
+
+  @doc """
   Renders a [Heroicon](https://heroicons.com).
 
   Heroicons come in three styles – outline, solid, and mini.
